@@ -7,3 +7,6 @@ dependencies = ["pypdfium2"]
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+pdfium_redaction = ["libpdfium.dylib"]
