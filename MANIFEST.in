@@ -1,2 +1,2 @@
-
 recursive-include pdfium_redaction *.dylib
+recursive-include pdfium_redaction *.so
