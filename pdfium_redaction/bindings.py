@@ -1,26 +1,16 @@
 import ctypes
-import pathlib
-import platform
+import os
 
-pkg_dir = pathlib.Path(__file__).parent
+LIB_PATH = os.path.join(os.path.dirname(__file__), "libpdfium.so")
 
-# select correct library
-if platform.system() == "Darwin":
-    lib_path = pkg_dir / "libpdfium.dylib"
-elif platform.system() == "Linux":
-    lib_path = pkg_dir / "libpdfium.so"
-else:
-    raise RuntimeError("Unsupported platform")
+_pdfium = ctypes.CDLL(LIB_PATH)
 
-_pdfium = ctypes.CDLL(str(lib_path))
-
-# declare function
 FPDFTextObj_RemoveChars = _pdfium.FPDFTextObj_RemoveChars
 
 FPDFTextObj_RemoveChars.argtypes = [
-    ctypes.c_void_p,  # FPDF_PAGEOBJECT
-    ctypes.c_int,     # index
-    ctypes.c_int      # count
+    ctypes.c_void_p,
+    ctypes.c_int,
+    ctypes.c_int,
 ]
 
 FPDFTextObj_RemoveChars.restype = None
