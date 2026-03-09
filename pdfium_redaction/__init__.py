@@ -1,8 +1,19 @@
 import os
 import pathlib
+import platform
+
+pkg_dir = pathlib.Path(__file__).parent
 
 # locate bundled PDFium library
-lib_path = pathlib.Path(__file__).parent / "libpdfium.dylib"
+if platform.system() == "Darwin":
+    lib_path = pkg_dir / "libpdfium.dylib"
+else:
+    lib_path = pkg_dir / "libpdfium.so"
 
-# tell pypdfium2 to use this library
+# force pypdfium2 to use this binary
 os.environ["PDFIUM_BINARY"] = str(lib_path)
+
+# export function
+from .binding import FPDFTextObj_RemoveChars
+
+__all__ = ["FPDFTextObj_RemoveChars"]
