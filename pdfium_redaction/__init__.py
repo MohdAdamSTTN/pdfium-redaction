@@ -14,6 +14,6 @@ else:
 os.environ["PDFIUM_BINARY"] = str(lib_path)
 
 # export function
-from .binding import FPDFTextObj_RemoveChars
+from .bindings import FPDFTextObj_RemoveChars
 
 __all__ = ["FPDFTextObj_RemoveChars"]
