@@ -1,3 +1,12 @@
-README
+[project]
+name = "pdfium-redaction"
+version = "0.1.0"
+description = "PDFium extension providing FPDFTextObj_RemoveChars"
+dependencies = ["pypdfium2"]
 
-Remove Char from Text Object
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+pdfium_redaction = ["libpdfium.dylib"]
