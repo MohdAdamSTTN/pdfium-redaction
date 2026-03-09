@@ -1,1 +1,2 @@
-include pdfium_redaction/libpdfium.dylib
+
+recursive-include pdfium_redaction *.dylib
