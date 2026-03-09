@@ -1,12 +1,14 @@
 import ctypes
 import pathlib
+import platform
 
-# locate bundled PDFium library
-lib_path = pathlib.Path(__file__).parent / "libpdfium.dylib"
+pkg_dir = pathlib.Path(__file__).parent
 
-# load your custom PDFium build
+if platform.system() == "Darwin":
+    lib_path = pkg_dir / "libpdfium.dylib"
+else:
+    lib_path = pkg_dir / "libpdfium.so"
+
 _pdfium = ctypes.CDLL(str(lib_path))
 
 FPDFTextObj_RemoveChars = _pdfium.FPDFTextObj_RemoveChars
-FPDFTextObj_RemoveChars.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_int]
-FPDFTextObj_RemoveChars.restype = None
