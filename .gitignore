@@ -1,0 +1,16 @@
+# build outputs
+out/
+build/
+*.a
+*.o
+*.so
+*.dylib
+
+# toolchains
+third_party/rust-toolchain/
+third_party/llvm-build/
+third_party/siso/
+
+# temp
+*.log
+*.tmp
