@@ -1,16 +1,19 @@
 # build outputs
 out/
-build/
-*.a
 *.o
+*.a
 *.so
 *.dylib
 
-# toolchains
-third_party/rust-toolchain/
-third_party/llvm-build/
-third_party/siso/
-
-# temp
+# temporary files
 *.log
 *.tmp
+.DS_Store
+
+# python artifacts (if you added python tooling)
+__pycache__/
+*.pyc
+
+# local toolchains downloaded by builds (optional)
+third_party/rust-toolchain/
+third_party/siso/
